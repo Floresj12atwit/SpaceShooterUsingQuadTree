@@ -4,7 +4,7 @@ Instead of holding all the objects in a structure like an array list, they are h
 If many objects are added to a specific quadrant that quadrant will subdivide into 4 more quadrants.  
 
 -When missiles hit enemies in this game the quadtree is called to see what ships are near and those
-will be destroyed as well to create a area of effect damage concept except against the boss.  When enemies are hit, other that are in the same cluster will explode as well.
+will be destroyed as well to create a area of effect damage concept except against the boss.  When enemies are hit, others that are in the same cluster will explode as well.
 
 -The quadtree is visualized at each frame to show it working in real time.  Some enemies may exist on the border of a quadrant leading them to be 
 destroyed when they are not near a proper collision.  
