@@ -6,4 +6,4 @@ will be destroyed as well to create a area of effect damage concept except again
 The quadtree is visualized at each frame to show it working in real time.  Some enemies may exist on the border of a quadrant leading them to be 
 destroyed when they are not near a proper collision.  This game currently has three levels and a boss fight but can be edited to have more if so desired.   
 
-
+The game is run from the HelloApplication file found in the 
