@@ -11,4 +11,4 @@ destroyed when they are not near a proper collision.
 
 -This game currently has three levels and a boss fight but can be edited to have more if so desired.   
 
-The game is run from the HelloApplication file found in the 
+The game is run from the HelloApplication.java file found in the directory src/main -> java -> com/example/spaceshooterusingquadtrees1 
