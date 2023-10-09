@@ -24,6 +24,7 @@ public class HelloApplication extends Application {
 
     public static Pane root = new Pane();
     
+    //Importing the resources for the game 
     final Image BACKGROUND_IMAGE = new Image(String.valueOf(this.getClass().getResource("/com/example/spaceshooterusingquadtrees1/GameDecals/SpaceShooterBackGround.jpg")));
     final Image PLAYER_IMG = new Image(String.valueOf(this.getClass().getResource("/com/example/spaceshooterusingquadtrees1/GameDecals/PlayerShip.png")));
     final Image ENEMY_IMG = new Image(String.valueOf(this.getClass().getResource("/com/example/spaceshooterusingquadtrees1/GameDecals/ENEMY_SHIP1.png")));
@@ -33,15 +34,17 @@ public class HelloApplication extends Application {
             new Image(String.valueOf(this.getClass().getResource("/com/example/spaceshooterusingquadtrees1/GameDecals/ENEMY_SHIP3.png")))
     };
     final Image EXPLOSION_IMG = new Image(String.valueOf(this.getClass().getResource("/com/example/spaceshooterusingquadtrees1/GameDecals/Explosion.png")));
+    //End of resources importing
 
+    //Defining the size of the game window
     final int GAME_WINDOW_LENGTH = 600;
     final int GAME_WINDOW_HEIGHT = 600;
-
     final int leftBoundary=0;
     final int rightBoundary=GAME_WINDOW_LENGTH-xSize;
     final int topBoundary=0;
     final int bottomBoundary=GAME_WINDOW_HEIGHT-ySize;
 
+    //Creates the instance of the quadtree
     Rectangle baseRectangle = new Rectangle(0,0,GAME_WINDOW_LENGTH,GAME_WINDOW_HEIGHT);
     QuadTree qt = new QuadTree(0, baseRectangle);
     final int bottomBorder=600;
@@ -62,6 +65,11 @@ public class HelloApplication extends Application {
             new BackgroundSize(600,600,true,true,true,true));
 
     Background background = new Background(deepSpace);
+
+
+    /*
+     * Creates the gameboard where the game is played
+     */
 
     private Parent createBoard(){
         root.setPrefSize(600,600);
@@ -121,7 +129,9 @@ public class HelloApplication extends Application {
     private void removeTransition(Text levelChange){
         root.getChildren().remove(levelChange);
     }
-
+    /*
+    * Game over screen
+    */
     private void gameOver(){
         Text gameOver = new Text(180,200, "Game OVER! :'(\nYour score was: "+score+" =)");
         Font f = Font.font("Impact", FontWeight.LIGHT, 33);
@@ -130,6 +140,9 @@ public class HelloApplication extends Application {
         gameOver.setScaleY(2);
         root.getChildren().add(gameOver);
     }
+    /*
+    * Game Win screen
+    */
     private void winScreen(){
         Text winScreen = new Text(180,200, "YOU WON!! :)\nYour score was: "+score+" =)");
         Font f = Font.font("Impact", FontWeight.LIGHT, 30);
@@ -258,6 +271,10 @@ public class HelloApplication extends Application {
         }
         round++;
     }
+
+    /*
+     * Generates the final boss for the game 
+     */
     private void generateBoss(){
         int yOffScreen=-300;
         int xOffSet = 0;
@@ -527,9 +544,9 @@ public class HelloApplication extends Application {
                     round++;
                 }
 
-                //All levels work. Now it's time to essentially copy everything into a clean version of source code
+               
             }
-            //Object pool does not appear to be necessary
+            
             if (t > 2 && t < 2.2) {
 
 

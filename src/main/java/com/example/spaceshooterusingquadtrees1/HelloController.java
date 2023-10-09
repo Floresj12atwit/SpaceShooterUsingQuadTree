@@ -24,6 +24,9 @@ public class HelloController {
     public static boolean moveUp;
     public static boolean moveDown;
 
+    /*
+     * This method defines the actions the user can do with the player (moving and shooting missiles)
+     */
     public void moveRectangleOnKeyPress(Scene scene, Sprite rect){
         scene.setOnKeyPressed(e->{
 

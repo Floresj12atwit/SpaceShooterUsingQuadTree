@@ -4,7 +4,9 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-
+/*
+ * This class is used to define the base class that all of the objects in the game are 
+ */
 public class Sprite extends Rectangle{
     boolean isDead = false;
     public String type;
@@ -27,6 +29,9 @@ public class Sprite extends Rectangle{
         setFill(new ImagePattern(decal));
     }
 
+    /*
+     * These methods are used to move the sprites 
+     */
     void moveLeft(){
         setTranslateX(getTranslateX()-velocity);
     }
@@ -42,10 +47,6 @@ public class Sprite extends Rectangle{
 
     public void setVelocity(int newVelocity){
         velocity = newVelocity;
-    }
-
-    public void loadDataFromRectangle(){
-
     }
 
 
