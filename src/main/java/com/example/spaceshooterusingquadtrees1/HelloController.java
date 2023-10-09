@@ -1,33 +1,24 @@
 package com.example.spaceshooterusingquadtrees1;
 
-import javafx.fxml.FXML;
+import java.io.InputStream;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseButton;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+
+
 
 public class HelloController {
 
-    static boolean mouseClicked;
-    @FXML
-    private Label welcomeText;
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
+    //These variables were made to reference the images for the missiles in the static context where they are needed 
 
-    public void createPointsOnMouseClick(Scene scene, Pane root){
-        scene.setOnMouseClicked(mouseEvent -> {
-        if(mouseEvent.getButton()== MouseButton.PRIMARY){
+    static InputStream ENEMY_MISSILE_IMG_Stream = HelloController.class.getResourceAsStream("/com/example/spaceshooterusingquadtrees1/GameDecals/ENEMY_SHIP1.png");
+    static InputStream MISSILE_IMG_Stream = HelloController.class.getResourceAsStream("/com/example/spaceshooterusingquadtrees1/GameDecals/ENEMY_SHIP1.png");
 
-        }
-        });
+    static Image ENEMY_MISSILE = new Image(ENEMY_MISSILE_IMG_Stream);
+    static Image MISSILE_IMG = new Image(MISSILE_IMG_Stream);
 
-        //mouseEvent.getButton()== MouseButton.PRIMARY
 
-    }
     public static boolean moveLeft;
     public static boolean moveRight;
     public static boolean moveUp;
@@ -71,19 +62,20 @@ public class HelloController {
         });
     }
     public static void shoot(Sprite shooter){
+        
         Sprite s;
             if(shooter.type.equals("Enemy")) {
-                s = new Sprite((int) (shooter.getX() + shooter.getTranslateX() + shooter.getWidth() / 2), (int) (shooter.getY() + shooter.getTranslateY() + shooter.getHeight()), 5, 20, shooter.type + "bullet", Color.BLACK, HelloApplication.ENEMY_MISSILE_IMG);
+                s = new Sprite((int) (shooter.getX() + shooter.getTranslateX() + shooter.getWidth() / 2), (int) (shooter.getY() + shooter.getTranslateY() + shooter.getHeight()), 5, 20, shooter.type + "bullet", Color.BLACK, HelloController.ENEMY_MISSILE);
                 s.setStroke(Color.WHITE);
                 HelloApplication.root.getChildren().add(s);
 
             } else if(shooter.type.equals("player")) {
-            s = new Sprite((int) (shooter.getX() + shooter.getTranslateX() + shooter.getWidth() / 2), (int) (shooter.getY() + shooter.getTranslateY()), 5, 20, shooter.type + "bullet", Color.BLACK, HelloApplication.MISSILE_IMG);
+            s = new Sprite((int) (shooter.getX() + shooter.getTranslateX() + shooter.getWidth() / 2), (int) (shooter.getY() + shooter.getTranslateY()), 5, 20, shooter.type + "bullet", Color.BLACK, HelloController.MISSILE_IMG);
             s.setStroke(Color.WHITE);
             HelloApplication.root.getChildren().add(s);
         }
-        //Bullet b = new Bullet((int) (shooter.getTranslateX() + 40), (int) shooter.getTranslateY(), 5, 20, Color.BLACK);
-        //HelloApplication.root.getChildren().add(s);
+        
     }
 
 }
+

@@ -13,10 +13,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+
 
 
 import static com.example.spaceshooterusingquadtrees1.Sprite.xSize;
@@ -25,18 +23,16 @@ import static com.example.spaceshooterusingquadtrees1.Sprite.ySize;
 public class HelloApplication extends Application {
 
     public static Pane root = new Pane();
-
-    static final Image BACKGROUND_IMAGE = new Image("C:\\Users\\jsf21\\IdeaProjects\\SpaceShooterUsingQuadTree\\src\\main\\java\\GameDecals\\SpaceShooterBackGround.jpg");
-    static final Image PLAYER_IMG = new Image("C:\\Users\\jsf21\\IdeaProjects\\SpaceShooterUsingQuadTree\\src\\main\\java\\GameDecals\\PlayerShip.png");
-    static final Image MISSILE_IMG = new Image("C:\\Users\\jsf21\\IdeaProjects\\SpaceShooterTesting\\src\\main\\java\\com\\example\\spaceshootertesting\\Decals\\Decals\\Missile.png");
-    static final Image ENEMY_MISSILE_IMG = new Image("C:\\Users\\jsf21\\IdeaProjects\\SpaceShooterTesting\\src\\main\\java\\com\\example\\spaceshootertesting\\Decals\\Decals\\EnemyMissile.png");
-    static final Image ENEMY_IMG = new Image("C:\\Users\\jsf21\\IdeaProjects\\SpaceShooterTesting\\src\\main\\java\\com\\example\\spaceshootertesting\\Decals\\Decals\\ENEMY_SHIP1.png");
-    static final Image[] BOMBS_IMG = {
-            new Image("C:\\Users\\jsf21\\IdeaProjects\\SpaceShooterTest2\\src\\main\\java\\com\\example\\spaceshootertest2\\SpaceShooter images\\ENEMY_SHIP1.png"),
-            new Image("C:\\Users\\jsf21\\IdeaProjects\\SpaceShooterTest2\\src\\main\\java\\com\\example\\spaceshootertest2\\SpaceShooter images\\ENEMY_SHIP2.png"),
-            new Image("C:\\Users\\jsf21\\IdeaProjects\\SpaceShooterTest2\\src\\main\\java\\com\\example\\spaceshootertest2\\SpaceShooter images\\ENEMY_SHIP3.png")
+    
+    final Image BACKGROUND_IMAGE = new Image(String.valueOf(this.getClass().getResource("/com/example/spaceshooterusingquadtrees1/GameDecals/SpaceShooterBackGround.jpg")));
+    final Image PLAYER_IMG = new Image(String.valueOf(this.getClass().getResource("/com/example/spaceshooterusingquadtrees1/GameDecals/PlayerShip.png")));
+    final Image ENEMY_IMG = new Image(String.valueOf(this.getClass().getResource("/com/example/spaceshooterusingquadtrees1/GameDecals/ENEMY_SHIP1.png")));
+    final Image[] BOMBS_IMG = {
+            new Image(String.valueOf(this.getClass().getResource("/com/example/spaceshooterusingquadtrees1/GameDecals/ENEMY_SHIP1.png"))),
+            new Image(String.valueOf(this.getClass().getResource("/com/example/spaceshooterusingquadtrees1/GameDecals/ENEMY_SHIP2.png"))),
+            new Image(String.valueOf(this.getClass().getResource("/com/example/spaceshooterusingquadtrees1/GameDecals/ENEMY_SHIP3.png")))
     };
-    static final Image EXPLOSION_IMG = new Image("C:\\Users\\jsf21\\IdeaProjects\\SpaceShooterUsingQuadTree\\src\\main\\java\\GameDecals\\Explosion.png");
+    final Image EXPLOSION_IMG = new Image(String.valueOf(this.getClass().getResource("/com/example/spaceshooterusingquadtrees1/GameDecals/Explosion.png")));
 
     final int GAME_WINDOW_LENGTH = 600;
     final int GAME_WINDOW_HEIGHT = 600;
@@ -97,7 +93,9 @@ public class HelloApplication extends Application {
         return root;
 
     }
-
+    /*
+     * Code below is the level progession 
+     */
     boolean level1=false;
     boolean level2=false;
     boolean level3=false;
@@ -184,9 +182,8 @@ public class HelloApplication extends Application {
         int clusterSize = 0;
         int xOffSet = 0;
         int yOffScreen = -150;
-        //int yOffScreen=0;
         int[] clusterRows = {25, -150, -250};
-        //Right adjust limit is 480
+        
 
         if (whichCluster == 1 || whichCluster == 2) {
             if (whichCluster == 1) {
@@ -301,11 +298,12 @@ public class HelloApplication extends Application {
 
     Text levelChange;
     private void update1() {
-        t += 0.016;
+        t += 0.010;
+        
 
 
         ArrayList<Sprite> returned = new ArrayList<>();
-        //-265 //-265
+        
         final boolean atRightBorder = player.getTranslateX() == rightBoundary-265;
         final boolean atLeftBorder = player.getTranslateX() == leftBoundary-265;
         final boolean atTopBorder = player.getTranslateY() == topBoundary-500;
@@ -369,11 +367,9 @@ public class HelloApplication extends Application {
 
                 switch (s.type) {
                     case "Enemybullet":
-                        s.setVelocity(4);
+                        s.setVelocity(2);
                         s.moveDown();
-                        //This can be used to change bullet size depending on enemy
-                        //s.setHeight(30);
-                        //s.setWidth(30);
+                        
 
                         if(s.getTranslateY() + s.getY() > bottomBorder) {
                             //System.out.println("I reached the bottom of the screen");

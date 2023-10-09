@@ -9,8 +9,5 @@
         <module name="SpaceShooterUsingQuadTrees1" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="SpaceShooterUsingQuadTrees1" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
